@@ -1,0 +1,157 @@
+<!-- writer-detail.html -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yozuvchi haqida</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/vendors.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+</head>
+<body class="dark-scheme">
+    <div id="wrapper">
+        <div class="float-text show-on-scroll">
+            <span><a href="#">Scroll to top</a></span>
+        </div>
+        <div class="scrollbar-v show-on-scroll"></div>
+        <div id="de-loader"></div>
+
+        <header class="transparent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                <div id="logo">
+                                    <a href="index.html">
+                                        <img class="logo-main" src="images/logo.webp" alt="">
+                                        <img class="logo-scroll" src="images/logo.webp" alt="">
+                                        <img class="logo-mobile" src="images/logo.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="de-flex-col header-col-mid">
+                                    <ul id="mainmenu">
+                                        <li><a class="menu-item" href="index.html">Bosh sahifa</a></li>
+                                        <li><a class="menu-item" href="#section-about">Biz haqimizda</a></li>
+                                        <li><a class="menu-item" href="writers.html">Yozuvchilar</a></li>
+                                        <li><a class="menu-item" href="news.html">Yangiliklar</a></li>
+                                        <li><a class="menu-item" href="contact.html">Aloqa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="de-flex-col">
+                                <div class="menu_side_area">
+                                    <span id="menu-btn"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="section-hero" class="section-dark no-top no-bottom text-light jarallax relative mh-500">
+            <img id="hero-bg" src="images/background/3.webp" class="jarallax-img" alt="">
+            <div class="gradient-edge-bottom h-50"></div>
+            <div class="sw-overlay op-5"></div>
+            <div class="abs bottom-10 z-2 w-100">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-10">
+                            <h1 id="writer-name" class="text-start fs-48 fs-sm-10vw wow fadeIn" data-wow-delay=".6s"></h1>
+                            <p id="writer-book" class="text-warning fs-20"></p>
+                            <p id="writer-years" class="text-light fs-16"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="blog-read">
+                            <div class="post-text">
+                                <img id="writer-image" src="" style="max-width: 60%; height: 80%; border-radius: 10px;" alt="">
+                                <div id="writer-content"></div>
+                            </div>
+                        </div>
+                        <div class="spacer-single"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-light section-dark">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-12">
+                        <div class="d-lg-flex align-items-center justify-content-between text-center">
+                            <div>
+                                <h3 class="fs-20">Manzil</h3>
+                                Toshkent, O'zbekiston<br>
+                                Amir Temur ko'chasi 108
+                            </div>
+                            <div>
+                                <img src="images/logo.webp" class="w-150px" alt="">
+                                <div class="social-icons mb-sm-30 mt-4">
+                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="fs-20">Bog'lanish</h3>
+                                T. +998 71 123 45 67<br>
+                                M. info@writers.uz
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            Copyright 2025 - O'zbekiston Yozuvchilar Sammiti
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/vendors.js"></script>
+    <script src="js/designesia.js"></script>
+    <script src="js/writers-data.js"></script>
+    <script>
+        // URL dan ID olish
+        const urlParams = new URLSearchParams(window.location.search);
+        const writerId = urlParams.get('id');
+
+        if (writerId && writersData[writerId]) {
+            const writer = writersData[writerId];
+            
+            // Ma'lumotlarni ko'rsatish
+            document.getElementById('writer-name').textContent = writer.name;
+            document.getElementById('writer-book').textContent = writer.book;
+            document.getElementById('writer-years').textContent = writer.years;
+            document.getElementById('writer-image').src = writer.image;
+            document.getElementById('hero-bg').src = writer.heroImage;
+            document.getElementById('writer-content').innerHTML = writer.content;
+            
+            // Title yangilash
+            document.title = writer.name + ' - O\'zbekiston Adabiyoti';
+        } else {
+            // Agar yozuvchi topilmasa
+            document.getElementById('writer-content').innerHTML = '<p>Yozuvchi topilmadi.</p>';
+        }
+    </script>
+</body>
+</html>
